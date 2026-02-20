@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Briefing de Projeto Digital</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- CURSOR PERSONALIZADO -->
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-trail" id="cursorTrail"></div>
+
+  <!-- PARTICLES BACKGROUND -->
+  <canvas id="particles" aria-hidden="true"></canvas>
+
+  <!-- PROGRESSO -->
+  <div class="progress-bar" id="progressBar" role="progressbar" aria-label="Progresso do formulário"></div>
+
+  <!-- STEPS INDICATOR -->
+  <nav class="steps-nav" id="stepsNav" aria-label="Etapas do formulário">
+    <div class="steps-nav__inner">
+      <div class="step-dot active" data-step="0" title="Empresa">
+        <span class="step-dot__icon">🏢</span>
+        <span class="step-dot__label">Empresa</span>
+      </div>
+      <div class="step-dot" data-step="1" title="Projeto">
+        <span class="step-dot__icon">🎯</span>
+        <span class="step-dot__label">Projeto</span>
+      </div>
+      <div class="step-dot" data-step="2" title="Público">
+        <span class="step-dot__icon">👥</span>
+        <span class="step-dot__label">Público</span>
+      </div>
+      <div class="step-dot" data-step="3" title="Design">
+        <span class="step-dot__icon">🎨</span>
+        <span class="step-dot__label">Design</span>
+      </div>
+      <div class="step-dot" data-step="4" title="Funcionalidades">
+        <span class="step-dot__icon">⚙️</span>
+        <span class="step-dot__label">Funções</span>
+      </div>
+      <div class="step-dot" data-step="5" title="Orçamento">
+        <span class="step-dot__icon">💰</span>
+        <span class="step-dot__label">Budget</span>
+      </div>
+      <div class="step-dot" data-step="6" title="Revisão">
+        <span class="step-dot__icon">✅</span>
+        <span class="step-dot__label">Revisão</span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="hero__tag">Formulário de Projeto</div>
+    <h1 class="hero__title">
+      Vamos criar algo<br/>
+      <span class="hero__title--gradient">incrível juntos</span>
+    </h1>
+    <p class="hero__subtitle">
+      Preencha o briefing abaixo para que eu entenda seu projeto em detalhes.<br/>
+      Leva menos de <strong>10 minutos</strong> e faz toda a diferença no resultado.
+    </p>
+    <button class="hero__cta" id="startBtn">
+      <span>Começar agora</span>
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+        <path d="M12 5v14M5 12l7 7 7-7"/>
+      </svg>
+    </button>
+  </header>
+
+  <!-- FORM CONTAINER -->
+  <main class="form-wrapper" id="formWrapper">
+    <form id="briefingForm" novalidate>
+
+      <!-- ===== STEP 0 – EMPRESA ===== -->
+      <section class="form-step active" data-step="0">
+        <div class="step-header">
+          <div class="step-number">01</div>
+          <div>
+            <h2 class="step-title">Identidade da Empresa</h2>
+            <p class="step-desc">Vamos começar conhecendo quem você é.</p>
+          </div>
+        </div>
+
+        <div class="form-grid form-grid--2">
+          <div class="form-group">
+            <label for="razaoSocial">Razão Social <span class="req">*</span></label>
+            <input type="text" id="razaoSocial" name="razaoSocial" placeholder="Nome jurídico da empresa" required />
+          </div>
+          <div class="form-group">
+            <label for="nomeFantasia">Nome Fantasia</label>
+            <input type="text" id="nomeFantasia" name="nomeFantasia" placeholder="Como a empresa é conhecida" />
+          </div>
+        </div>
+
+        <div class="form-grid form-grid--2">
+          <div class="form-group">
+            <label for="segmento">Segmento / Setor <span class="req">*</span></label>
+            <input type="text" id="segmento" name="segmento" placeholder="Ex: Tecnologia, Saúde, Varejo..." required />
+          </div>
+          <div class="form-group">
+            <label for="siteAtual">Site Atual</label>
+            <input type="url" id="siteAtual" name="siteAtual" placeholder="https://" />
+          </div>
+        </div>
+
+        <div class="form-grid form-grid--2">
+          <div class="form-group">
+            <label for="responsavel">Seu Nome <span class="req">*</span></label>
+            <input type="text" id="responsavel" name="responsavel" placeholder="Nome do responsável" required />
+          </div>
+          <div class="form-group">
+            <label for="cargo">Cargo / Função</label>
+            <input type="text" id="cargo" name="cargo" placeholder="Ex: CEO, Gerente, Diretor..." />
+          </div>
+        </div>
+
+        <div class="form-grid form-grid--2">
+          <div class="form-group">
+            <label for="email">E-mail <span class="req">*</span></label>
+            <input type="email" id="email" name="email" placeholder="seu@email.com" required />
+          </div>
+          <div class="form-group">
+            <label for="whatsapp">WhatsApp <span class="req">*</span></label>
+            <input type="tel" id="whatsapp" name="whatsapp" placeholder="(11) 9 0000-0000" required />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="descricaoEmpresa">Conte sobre a empresa</label>
+          <textarea id="descricaoEmpresa" name="descricaoEmpresa" rows="4" placeholder="Histórico, produtos/serviços principais, diferenciais..."></textarea>
+          <span class="char-count" id="descEmpresaCount">0 / 500</span>
+        </div>
+      </section>
+
+      <!-- ===== STEP 1 – PROJETO ===== -->
+      <section class="form-step" data-step="1">
+        <div class="step-header">
+          <div class="step-number">02</div>
+          <div>
+            <h2 class="step-title">Objetivo do Projeto</h2>
+            <p class="step-desc">O que vamos construir e por quê?</p>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Tipo de Projeto <span class="req">*</span></label>
+          <div class="card-select" id="tipoProjetoSelect" role="group" aria-label="Tipo de projeto">
+            <button type="button" class="card-option" data-value="site-institucional">
+              <span class="card-option__icon">🌐</span>
+              <span class="card-option__label">Site Institucional</span>
+            </button>
+            <button type="button" class="card-option" data-value="landing-page">
+              <span class="card-option__icon">🚀</span>
+              <span class="card-option__label">Landing Page</span>
+            </button>
+            <button type="button" class="card-option" data-value="ecommerce">
+              <span class="card-option__icon">🛒</span>
+              <span class="card-option__label">E-commerce</span>
+            </button>
+            <button type="button" class="card-option" data-value="sistema-web">
+              <span class="card-option__icon">⚙️</span>
+              <span class="card-option__label">Sistema Web</span>
+            </button>
+            <button type="button" class="card-option" data-value="app-mobile">
+              <span class="card-option__icon">📱</span>
+              <span class="card-option__label">App Mobile</span>
+            </button>
+            <button type="button" class="card-option" data-value="portal">
+              <span class="card-option__icon">🏛️</span>
+              <span class="card-option__label">Portal / Intranet</span>
+            </button>
+            <button type="button" class="card-option" data-value="blog">
+              <span class="card-option__icon">✍️</span>
+              <span class="card-option__label">Blog / Conteúdo</span>
+            </button>
+            <button type="button" class="card-option" data-value="ead">
+              <span class="card-option__icon">🎓</span>
+              <span class="card-option__label">Plataforma EAD</span>
+            </button>
+          </div>
+          <input type="hidden" id="tipoProjeto" name="tipoProjeto" />
+        </div>
+
+        <div class="form-group">
+          <label for="objetivoPrincipal">Qual o objetivo principal? <span class="req">*</span></label>
+          <textarea id="objetivoPrincipal" name="objetivoPrincipal" rows="3" placeholder="Ex: Aumentar vendas online, gerar leads qualificados, automatizar processos internos..." required></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="problemaAtual">Qual problema atual isso resolve?</label>
+          <textarea id="problemaAtual" name="problemaAtual" rows="3" placeholder="Descreva as dores e limitações do processo atual..."></textarea>
+        </div>
+
+        <div class="form-grid form-grid--2">
+          <div class="form-group">
+            <label for="prazoDesejado">Prazo desejado para entrega</label>
+            <input type="date" id="prazoDesejado" name="prazoDesejado" />
+          </div>
+          <div class="form-group">
+            <label for="dataImportante">Data importante (evento/lançamento)</label>
+            <input type="date" id="dataImportante" name="dataImportante" />
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== STEP 2 – PÚBLICO ===== -->
+      <section class="form-step" data-step="2">
+        <div class="step-header">
+          <div class="step-number">03</div>
+          <div>
+            <h2 class="step-title">Público-Alvo</h2>
+            <p class="step-desc">Para quem estamos construindo isso?</p>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="perfilPublico">Perfil do público-alvo <span class="req">*</span></label>
+          <textarea id="perfilPublico" name="perfilPublico" rows="3" placeholder="Idade, gênero, escolaridade, renda, localização, interesses..." required></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="doresPublico">Principais necessidades e dores do público</label>
+          <textarea id="doresPublico" name="doresPublico" rows="3" placeholder="O que o público precisa? O que os frustra hoje?"></textarea>
+        </div>
+
+        <div class="form-grid form-grid--2">
+          <div class="form-group">
+            <label>Nível de familiaridade com tecnologia</label>
+            <div class="radio-group" role="radiogroup">
+              <label class="radio-card">
+                <input type="radio" name="nivelTech" value="iniciante" />
+                <span class="radio-card__box">
+                  <span class="radio-card__icon">🌱</span>
+                  <span>Iniciante</span>
+                </span>
+              </label>
+              <label class="radio-card">
+                <input type="radio" name="nivelTech" value="intermediario" />
+                <span class="radio-card__box">
+                  <span class="radio-card__icon">⚡</span>
+                  <span>Intermediário</span>
+                </span>
+              </label>
+              <label class="radio-card">
+                <input type="radio" name="nivelTech" value="avancado" />
+                <span class="radio-card__box">
+                  <span class="radio-card__icon">🚀</span>
+                  <span>Avançado</span>
+                </span>
+              </label>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Dispositivos principais</label>
+            <div class="checkbox-group" role="group">
+              <label class="check-card">
+                <input type="checkbox" name="dispositivos" value="mobile" />
+                <span class="check-card__box">📱 Mobile</span>
+              </label>
+              <label class="check-card">
+                <input type="checkbox" name="dispositivos" value="desktop" />
+                <span class="check-card__box">💻 Desktop</span>
+              </label>
+              <label class="check-card">
+                <input type="checkbox" name="dispositivos" value="tablet" />
+                <span class="check-card__box">📋 Tablet</span>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="concorrentes">Principais concorrentes (nome + site)</label>
+          <textarea id="concorrentes" name="concorrentes" rows="3" placeholder="Liste os concorrentes que você conhece e admira..."></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="referencias">Sites / sistemas de referência visual ou funcional</label>
+          <textarea id="referencias" name="referencias" rows="3" placeholder="Links ou nomes de projetos que você gosta e quer como inspiração..."></textarea>
+        </div>
+      </section>
+
+      <!-- ===== STEP 3 – DESIGN ===== -->
+      <section class="form-step" data-step="3">
+        <div class="step-header">
+          <div class="step-number">04</div>
+          <div>
+            <h2 class="step-title">Identidade Visual</h2>
+            <p class="step-desc">Como o projeto deve se parecer?</p>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>O que você já tem?</label>
+          <div class="checkbox-group" role="group">
+            <label class="check-card">
+              <input type="checkbox" name="ativos" value="logo" />
+              <span class="check-card__box">🎨 Logotipo</span>
+            </label>
+            <label class="check-card">
+              <input type="checkbox" name="ativos" value="manual" />
+              <span class="check-card__box">📖 Manual de Marca</span>
+            </label>
+            <label class="check-card">
+              <input type="checkbox" name="ativos" value="cores" />
+              <span class="check-card__box">🎨 Paleta de Cores</span>
+            </label>
+            <label class="check-card">
+              <input type="checkbox" name="ativos" value="tipografia" />
+              <span class="check-card__box">🔤 Tipografia</span>
+            </label>
+            <label class="check-card">
+              <input type="checkbox" name="ativos" value="nenhum" />
+              <span class="check-card__box">❌ Nada ainda</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="form-grid form-grid--2">
+          <div class="form-group">
+            <label for="coresMarca">Cores da marca (hex ou nome)</label>
+            <input type="text" id="coresMarca" name="coresMarca" placeholder="Ex: #7B3FA0, turquesa, preto..." />
+          </div>
+          <div class="form-group">
+            <label for="fontesMarca">Fontes utilizadas</label>
+            <input type="text" id="fontesMarca" name="fontesMarca" placeholder="Ex: Montserrat, Helvetica..." />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Estilo visual desejado</label>
+          <div class="style-grid" id="styleGrid" role="group">
+            <button type="button" class="style-option" data-value="minimalista">
+              <span class="style-preview style-preview--minimalista"></span>
+              <span>Minimalista</span>
+            </button>
+            <button type="button" class="style-option" data-value="moderno">
+              <span class="style-preview style-preview--moderno"></span>
+              <span>Moderno Tech</span>
+            </button>
+            <button type="button" class="style-option" data-value="elegante">
+              <span class="style-preview style-preview--elegante"></span>
+              <span>Elegante</span>
+            </button>
+            <button type="button" class="style-option" data-value="corporativo">
+              <span class="style-preview style-preview--corporativo"></span>
+              <span>Corporativo</span>
+            </button>
+            <button type="button" class="style-option" data-value="colorido">
+              <span class="style-preview style-preview--colorido"></span>
+              <span>Criativo</span>
+            </button>
+            <button type="button" class="style-option" data-value="dark">
+              <span class="style-preview style-preview--dark"></span>
+              <span>Dark Mode</span>
+            </button>
+          </div>
+          <input type="hidden" id="estiloVisual" name="estiloVisual" />
+        </div>
+
+        <div class="form-group">
+          <label for="restricoesDesign">Restrições / O que NÃO usar no design</label>
+          <textarea id="restricoesDesign" name="restricoesDesign" rows="3" placeholder="Cores que não gosta, estilos a evitar, referências negativas..."></textarea>
+        </div>
+      </section>
+
+      <!-- ===== STEP 4 – FUNCIONALIDADES ===== -->
+      <section class="form-step" data-step="4">
+        <div class="step-header">
+          <div class="step-number">05</div>
+          <div>
+            <h2 class="step-title">Funcionalidades</h2>
+            <p class="step-desc">O que o projeto precisa fazer?</p>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Funcionalidades gerais desejadas</label>
+          <div class="feat-grid" role="group" id="featGrid">
+            <label class="feat-item"><input type="checkbox" name="features" value="formulario-contato" /><span>📬 Formulário de Contato</span></label>
+            <label class="feat-item"><input type="checkbox" name="features" value="chat" /><span>💬 Chat / Chatbot</span></label>
+            <label class="feat-item"><input type="checkbox" name="features" value="blog" /><span>✍️ Blog / Notícias</span></label>
+            <label class="feat-item"><input type="checkbox" name="features" value="galeria" /><span>🖼️ Galeria / Portfólio</span></label>
+            <label class="feat-item"><input type="checkbox" name="features" value="videos" /><span>🎥 Vídeos Integrados</span></label>
+            <label class="feat-item"><input type="checkbox" name="features" value="mapa" /><span>📍 Google Maps</span></label>
+            <label class="feat-item"><input type="checkbox" name="features" value="newsletter" /><span>📧 Newsletter</span></label>
+            <label class="feat-item"><input type="checkbox" name="features" value="whatsapp" /><span>📲 Botão WhatsApp</span></label>
+            <label class="feat-item"><input type="checkbox" name="features" value="login" /><span>🔐 Login de Usuários</span></label>
+            <label class="feat-item"><input type="checkbox" name="features" value="dashboard" /><span>📊 Dashboard</span></label>
+            <label class="feat-item"><input type="checkbox" name="features" value="pagamento" /><span>💳 Pagamentos Online</span></label>
+            <label class="feat-item"><input type="checkbox" name="features" value="agendamento" /><span>📅 Agendamento</span></label>
+            <label class="feat-item"><input type="checkbox" name="features" value="cms" /><span>🛠️ Painel Admin (CMS)</span></label>
+            <label class="feat-item"><input type="checkbox" name="features" value="api" /><span>🔗 Integração API</span></label>
+            <label class="feat-item"><input type="checkbox" name="features" value="relatorios" /><span>📈 Relatórios</span></label>
+            <label class="feat-item"><input type="checkbox" name="features" value="multilingual" /><span>🌍 Multi-idioma</span></label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="outrasFeatures">Outras funcionalidades não listadas</label>
+          <textarea id="outrasFeatures" name="outrasFeatures" rows="3" placeholder="Descreva aqui funcionalidades específicas do seu negócio..."></textarea>
+        </div>
+
+        <div class="form-grid form-grid--2">
+          <div class="form-group">
+            <label for="integracoes">Sistemas atuais para integrar</label>
+            <input type="text" id="integracoes" name="integracoes" placeholder="ERP, CRM, Totvs, Salesforce..." />
+          </div>
+          <div class="form-group">
+            <label for="tecnologiaPreferida">Preferência de tecnologia</label>
+            <select id="tecnologiaPreferida" name="tecnologiaPreferida">
+              <option value="">Sem preferência</option>
+              <option value="wordpress">WordPress</option>
+              <option value="react">React / Next.js</option>
+              <option value="vue">Vue / Nuxt</option>
+              <option value="laravel">PHP / Laravel</option>
+              <option value="django">Python / Django</option>
+              <option value="dotnet">.NET / C#</option>
+              <option value="java">Java / Spring</option>
+              <option value="outro">Outro</option>
+            </select>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== STEP 5 – ORÇAMENTO ===== -->
+      <section class="form-step" data-step="5">
+        <div class="step-header">
+          <div class="step-number">06</div>
+          <div>
+            <h2 class="step-title">Orçamento & Cronograma</h2>
+            <p class="step-desc">Expectativas financeiras e de prazo.</p>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Faixa de investimento prevista <span class="req">*</span></label>
+          <div class="budget-grid" id="budgetGrid" role="radiogroup">
+            <button type="button" class="budget-option" data-value="ate5k">
+              <span class="budget-option__range">Até R$ 5mil</span>
+              <span class="budget-option__bar" style="--w:15%"></span>
+            </button>
+            <button type="button" class="budget-option" data-value="5k-15k">
+              <span class="budget-option__range">R$ 5k – 15k</span>
+              <span class="budget-option__bar" style="--w:30%"></span>
+            </button>
+            <button type="button" class="budget-option" data-value="15k-30k">
+              <span class="budget-option__range">R$ 15k – 30k</span>
+              <span class="budget-option__bar" style="--w:45%"></span>
+            </button>
+            <button type="button" class="budget-option" data-value="30k-60k">
+              <span class="budget-option__range">R$ 30k – 60k</span>
+              <span class="budget-option__bar" style="--w:60%"></span>
+            </button>
+            <button type="button" class="budget-option" data-value="60k-100k">
+              <span class="budget-option__range">R$ 60k – 100k</span>
+              <span class="budget-option__bar" style="--w:80%"></span>
+            </button>
+            <button type="button" class="budget-option" data-value="acima100k">
+              <span class="budget-option__range">Acima de R$ 100k</span>
+              <span class="budget-option__bar" style="--w:100%"></span>
+            </button>
+          </div>
+          <input type="hidden" id="orcamento" name="orcamento" />
+        </div>
+
+        <div class="form-group">
+          <label>Modelo de contratação</label>
+          <div class="radio-group" role="radiogroup">
+            <label class="radio-card">
+              <input type="radio" name="modeloContratacao" value="escopo-fixo" />
+              <span class="radio-card__box">
+                <span class="radio-card__icon">📋</span>
+                <span>Escopo Fixo</span>
+              </span>
+            </label>
+            <label class="radio-card">
+              <input type="radio" name="modeloContratacao" value="hora-homem" />
+              <span class="radio-card__box">
+                <span class="radio-card__icon">⏱️</span>
+                <span>Hora/Homem</span>
+              </span>
+            </label>
+            <label class="radio-card">
+              <input type="radio" name="modeloContratacao" value="mensalidade" />
+              <span class="radio-card__box">
+                <span class="radio-card__icon">🔄</span>
+                <span>Mensalidade</span>
+              </span>
+            </label>
+            <label class="radio-card">
+              <input type="radio" name="modeloContratacao" value="parceria" />
+              <span class="radio-card__box">
+                <span class="radio-card__icon">🤝</span>
+                <span>Parceria</span>
+              </span>
+            </label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Marketing digital após entrega</label>
+          <div class="feat-grid" role="group">
+            <label class="feat-item"><input type="checkbox" name="marketing" value="seo" /><span>🔍 SEO</span></label>
+            <label class="feat-item"><input type="checkbox" name="marketing" value="google-ads" /><span>📢 Google Ads</span></label>
+            <label class="feat-item"><input type="checkbox" name="marketing" value="social-ads" /><span>📱 Social Ads</span></label>
+            <label class="feat-item"><input type="checkbox" name="marketing" value="email-mkt" /><span>📧 E-mail Mkt</span></label>
+            <label class="feat-item"><input type="checkbox" name="marketing" value="analytics" /><span>📊 Analytics</span></label>
+            <label class="feat-item"><input type="checkbox" name="marketing" value="nenhum-mkt" /><span>❌ Não por ora</span></label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="infoAdicionais">Informações adicionais ou dúvidas</label>
+          <textarea id="infoAdicionais" name="infoAdicionais" rows="4" placeholder="Qualquer detalhe que considere importante..."></textarea>
+        </div>
+      </section>
+
+      <!-- ===== STEP 6 – REVISÃO ===== -->
+      <section class="form-step" data-step="6">
+        <div class="step-header">
+          <div class="step-number">07</div>
+          <div>
+            <h2 class="step-title">Revisão Final</h2>
+            <p class="step-desc">Confira as informações antes de enviar.</p>
+          </div>
+        </div>
+        <div id="reviewPanel" class="review-panel">
+          <!-- preenchido via JS -->
+        </div>
+        <div class="form-group" style="margin-top: 2rem;">
+          <label class="check-card check-card--confirm">
+            <input type="checkbox" id="confirmaEnvio" name="confirmaEnvio" required />
+            <span class="check-card__box">Confirmo que as informações são verdadeiras e autorizo o início do processo de levantamento de requisitos.</span>
+          </label>
+        </div>
+      </section>
+
+      <!-- NAVIGATION -->
+      <div class="form-nav">
+        <button type="button" class="btn btn--ghost" id="prevBtn" disabled>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path d="M19 12H5M12 5l-7 7 7 7"/>
+          </svg>
+          Anterior
+        </button>
+        <div class="form-nav__counter" id="stepCounter">1 / 7</div>
+        <button type="button" class="btn btn--primary" id="nextBtn">
+          Próximo
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </button>
+      </div>
+
+    </form>
+  </main>
+
+  <!-- SUCCESS STATE -->
+  <div class="success-screen" id="successScreen" aria-live="polite" aria-hidden="true">
+    <div class="success-screen__inner">
+      <div class="success-icon">
+        <svg viewBox="0 0 80 80" fill="none">
+          <circle cx="40" cy="40" r="38" stroke="url(#grad)" stroke-width="3"/>
+          <path d="M22 40l12 12 24-24" stroke="url(#grad2)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+          <defs>
+            <linearGradient id="grad" x1="0" y1="0" x2="80" y2="80">
+              <stop offset="0%" stop-color="#7B3FA0"/>
+              <stop offset="100%" stop-color="#04B3B9"/>
+            </linearGradient>
+            <linearGradient id="grad2" x1="0" y1="0" x2="80" y2="80">
+              <stop offset="0%" stop-color="#7B3FA0"/>
+              <stop offset="100%" stop-color="#04B3B9"/>
+            </linearGradient>
+          </defs>
+        </svg>
+      </div>
+      <h2>Briefing recebido!</h2>
+      <p>Obrigado por preencher. Entrarei em contato em até <strong>24 horas</strong> com uma proposta personalizada.</p>
+      <button class="btn btn--primary" id="downloadBtn">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <path d="M12 3v13M5 10l7 7 7-7M3 21h18"/>
+        </svg>
+        Baixar meu resumo
+      </button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
