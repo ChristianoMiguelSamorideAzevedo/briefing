@@ -1,5 +1,9 @@
 # Client Briefing Form
 
+<p align="center">
+  <img src="public/assets/logomiguelsam.png" width="300" alt="MIGUEL SAMORI Logo">
+</p>
+
 A multi-step form designed to collect project requirements from clients.
 
 ## Live Demo
@@ -13,7 +17,7 @@ https://github.com/ChristianoMiguelSamorideAzevedo/briefing.git
 - Multi-step form (7 steps)
 - Progress bar
 - Interactive particle background
-- Custom animated cursor
+- Custom animated curs
 - Visual project-type selection
 - Feature grid with checkboxes
 - Form validation
