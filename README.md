@@ -1,7 +1,7 @@
 # Client Briefing Form
 
 <p align="center">
-  <img src="public/assets/logomiguelsam.png" width="300" alt="MIGUEL SAMORI Logo">
+  <img src="public/assets/image/logomiguelsam.png" width="300" alt="MIGUEL SAMORI Logo">
 </p>
 
 A multi-step form designed to collect project requirements from clients.
