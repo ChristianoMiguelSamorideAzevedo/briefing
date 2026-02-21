@@ -1,77 +1,81 @@
-# 📋 Briefing de Projeto Digital
+# Client Briefing Form
 
-Formulário dinâmico multi-step para coleta de briefing de clientes.  
-Desenvolvido com HTML, CSS e JavaScript puros — sem dependências externas.
+A multi-step form designed to collect project requirements from clients.
 
-## 🚀 Como publicar no GitHub Pages
+## Live Demo
 
-### Passo 1 — Criar repositório
-1. Acesse [github.com/new](https://github.com/new)
-2. Nome sugerido: `briefing` ou `meu-briefing`
-3. Deixe **Public** e clique em **Create repository**
+Coming soon — will be available after GitHub Pages deployment.
 
-### Passo 2 — Fazer upload dos arquivos
-Faça upload dos 3 arquivos na raiz do repositório:
-```
-index.html
-style.css
-script.js
-```
+https://github.com/ChristianoMiguelSamorideAzevedo/briefing.git
 
-### Passo 3 — Ativar GitHub Pages
-1. Vá em **Settings** → **Pages**
-2. Em **Source**, selecione **Deploy from a branch**
-3. Branch: `main` | Pasta: `/ (root)`
-4. Clique em **Save**
+## Features
 
-### Passo 4 — Acessar o link
-Após ~1 minuto, seu formulário estará disponível em:
-```
-https://SEU-USUARIO.github.io/NOME-DO-REPOSITORIO/
-```
+- Multi-step form (7 steps)
+- Progress bar
+- Interactive particle background
+- Custom animated cursor
+- Visual project-type selection
+- Feature grid with checkboxes
+- Form validation
+- Phone number mask
+- Keyboard navigation (Enter / ←)
+- Review panel before submission
+- Download briefing as `.txt`
+- Toast notifications
+- Saves data to `localStorage`
+- Fully responsive layout
 
-Esse é o link que você envia para os clientes! 🎉
+## Tech Stack
 
-## 📁 Estrutura dos arquivos
+- HTML5
+- CSS3
+- JavaScript (Vanilla)
 
-| Arquivo | Função |
-|---|---|
-| `index.html` | Estrutura completa do formulário (7 etapas) |
-| `style.css`  | Todo o visual — paleta, animações, responsivo |
-| `script.js`  | Lógica — navegação, validação, revisão, download |
+## Project Structure
 
-## 🎨 Personalização rápida
+public/
+  index.html
+  style.css
+  script.js
+  assets/
 
-### Trocar as cores (em `style.css`):
+README.md
+
+## Getting Started
+
+To run this project locally:
+
+```bash
+git clone https://github.com/ChristianoMiguelSamorideAzevedo/briefing.git
+cd briefing
+open public/index.html
+
+## Customization
+
+This project uses a custom color palette based on the INFINITY IT brand.  
+You can modify all colors inside the `:root` section of `style.css`.
+
 ```css
 :root {
-  --purple-vibrant: #7B3FA0; /* Roxo principal */
-  --teal:           #04B3B9; /* Turquesa de destaque */
-  --purple-deep:    #1E102B; /* Fundo escuro */
+  --magenta-vibrant: #FF2DAF;
+  --purple-neon: #8A2BE2;
+  --purple-deep: #2A0A3D;
+  --electric-blue: #00C6FF;
+  --aqua-cyan: #00F5D4;
+  --lime-green: #A8FF00;
+  --yellow-neon: #FFE600;
 }
-```
+## Customization
 
-### Trocar seu nome/marca (em `index.html`):
-Busque por `"Briefing de Projeto Digital"` e substitua pelo nome da sua empresa.
+## Deployment
 
-### Adicionar envio por e-mail:
-Integre com [Formspree](https://formspree.io) ou [EmailJS](https://emailjs.com) no `script.js`, na função `submitForm()`.
+This project can be deployed using GitHub Pages.
 
-## ✅ Funcionalidades incluídas
+1. Go to **Settings** in your GitHub repository  
+2. Open the **Pages** section  
+3. Under **Source**, select **Deploy from a branch**  
+4. Choose the `master` branch  
+5. Set the folder to `/public`  
+6. Save the settings
 
-- 7 etapas de formulário com validação
-- Cursor personalizado animado
-- Partículas interativas no fundo
-- Barra de progresso
-- Seleção visual de tipo de projeto
-- Grade de funcionalidades (checkboxes)
-- Painel de revisão completo
-- Download do briefing em .txt
-- Responsivo para mobile
-- Máscara de telefone automática
-- Navegação por teclado (Enter / ←)
-- Toast notifications
-- Salva os dados no localStorage
-
----
-Criado por **Miguel Samori** — Desenvolvedor Full Stack
+After a few seconds, your project will be available at:
